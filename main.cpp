@@ -66,27 +66,30 @@ int main()
     getline(cin, s_temp_temp);
 
     vector<string> s_temp = split(rtrim(s_temp_temp));
+    if (n >= 1 && n <= 100) {
+        vector<int> s(n);
 
-    vector<int> s(n);
+        for (int i = 0; i < n; i++) {
+            int s_item = stoi(s_temp[i]);
+            if (s_item >= 1 && s_item <= 5) {
+                s[i] = s_item;
+            }
+        }
 
-    for (int i = 0; i < n; i++) {
-        int s_item = stoi(s_temp[i]);
+        string first_multiple_input_temp;
+        getline(cin, first_multiple_input_temp);
 
-        s[i] = s_item;
+        vector<string> first_multiple_input = split(rtrim(first_multiple_input_temp));
+
+        int d = stoi(first_multiple_input[0]);
+
+        int m = stoi(first_multiple_input[1]);
+
+        if ((d >= 1 && d <= 31) && (m >= 1 && m <= 12)) {
+            int result = birthday(s, d, m);
+            fout << result << "\n";
+        }
     }
-
-    string first_multiple_input_temp;
-    getline(cin, first_multiple_input_temp);
-
-    vector<string> first_multiple_input = split(rtrim(first_multiple_input_temp));
-
-    int d = stoi(first_multiple_input[0]);
-
-    int m = stoi(first_multiple_input[1]);
-
-    int result = birthday(s, d, m);
-
-    fout << result << "\n";
 
     fout.close();
 
