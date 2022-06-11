@@ -21,7 +21,6 @@ int birthday(vector<int> s, int d, int m) {
     int birthMonth = m;
     int successCount = 0;
     int arraySize = s.size();
-    std::vector <int> subArray;
     int numIterations = 0;
 
     //Capture the user's birth day and birth month
@@ -32,10 +31,22 @@ int birthday(vector<int> s, int d, int m) {
     //Plan, start at front of the array, have sub for loop
     // that starts at n and sums n-1 adjacent values to the first value.
     for (auto it = s.begin(); it != s.end(); ++it) {
+        int runningTotal = 0;
+        std::vector <int> subArray;
+
         for (int j = 0; ((j < birthMonth) && ((numIterations + j ) < arraySize)); j++) {
             subArray.push_back(s[numIterations + j]);
         }
         numIterations++;
+        int subArraySize = subArray.size();
+        if (subArraySize == birthMonth) {
+            for (int i = 0; i < subArraySize; i++) {
+                runningTotal += subArray[i];
+            }
+            if (runningTotal == birthDay) {
+                successCount++;
+            }
+        }
     }
 
     return successCount;
