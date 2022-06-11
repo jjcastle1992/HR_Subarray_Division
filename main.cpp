@@ -18,6 +18,16 @@ vector<string> split(const string &);
 
 int birthday(vector<int> s, int d, int m) {
 
+    //Capture the user's birth day and birth month
+    //Birth day must be equal to the sum of contiguous segments
+
+    //number of contiguous segments must be equal to the birth month.
+
+    //Plan, start at front of the array, have sub for loop
+    // that starts at n and sums n-1 adjacent values to the first value.
+
+    // if value == birth day, then increment successCount
+
 }
 
 int main()
