@@ -21,6 +21,8 @@ int birthday(vector<int> s, int d, int m) {
     int birthMonth = m;
     int successCount = 0;
     int arraySize = s.size();
+    std::vector <int> subArray;
+    int numIterations = 0;
 
     //Capture the user's birth day and birth month
     //Birth day must be equal to the sum of contiguous segments
@@ -29,16 +31,11 @@ int birthday(vector<int> s, int d, int m) {
 
     //Plan, start at front of the array, have sub for loop
     // that starts at n and sums n-1 adjacent values to the first value.
-    for (int i = 0; i < arraySize; i++) {
-        int numIterations = 0;
-        for (int j = i; ((j < (i + birthMonth)) && (j < (arraySize - i))); j++) {
-            int runningTotal =+ s[j];
-            numIterations++;
-            // if value == birth day, then increment successCount
-            if ((numIterations == birthMonth) && (runningTotal == birthDay)) {
-                successCount ++;
-            }
+    for (auto it = s.begin(); it != s.end(); ++it) {
+        for (int j = 0; ((j < birthMonth) && ((numIterations + j ) < arraySize)); j++) {
+            subArray.push_back(s[numIterations + j]);
         }
+        numIterations++;
     }
 
     return successCount;
