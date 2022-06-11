@@ -31,7 +31,7 @@ int birthday(vector<int> s, int d, int m) {
     // that starts at n and sums n-1 adjacent values to the first value.
     for (int i = 0; i < arraySize; i++) {
         int numIterations = 0;
-        for (int j = i; ((j < (j+ birthMonth)) && (j < (arraySize - i))); j++) {
+        for (int j = i; ((j < (i + birthMonth)) && (j < (arraySize - i))); j++) {
             int runningTotal =+ s[j];
             numIterations++;
             // if value == birth day, then increment successCount
